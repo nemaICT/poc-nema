@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Landon Hotel - Events &amp; Meetings</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+    <h1>Registration Form</h1>
+    <!-- the th:object = matches get the quoteRequestForm model from the beginQuoteRequest() method placed on the QuoteRequestController
+        the th:action matches the @{/newquote} endpoint from the GetMapping annotation on the beginQuoteRequest() method placed on the
+        QuoteRequestController-->
+    <form action="#" th:object="${quoteRequestForm}" th:action="@{/newquote}" method="post" class="inline">
+    
+    <ul th:if="${#fields.hasErrors('*')}" class="errors span-18">
+        <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+    </ul>
+    
+    <fieldset>
+        <div class="span-8">
+        		<label for="firstname">Firstname</label>
+            
+            <input type="text" id="firstname" th:field="*{firtname}" />
+        </div>
+        <div class="span-8">
+            <label for="lastname">Lastname</label>
+
+            <input type="text" id="lastname" th:field="*{lastname}" />
+        </div>
+        
+        <div class="span-8">
+            <input type="submit" id="submit" value="Submit" />
+        </div>
+    </fieldset>
+	</form>
+    
+</body>
+</html>
